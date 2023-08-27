@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#BoardPage button {
+  border: 1px saddlebrown solid;
+  background-color: antiquewhite;
+  width: 50px;
+  margin: 0 10px;
+}
