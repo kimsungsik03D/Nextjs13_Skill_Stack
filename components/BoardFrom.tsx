@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { fetchPostBoader } from "@/utils";
 
 const SearchButton = () => (
   <button type="submit" className=" w-36 border-solid border">
@@ -13,11 +14,12 @@ const BoardFrom = () => {
   const [content, setContent] = useState("");
   const [regtId, setRegtId] = useState("");
 
-  const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSave = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(e);
     console.log(e.target);
     console.log("content : ", content, "\nregtId : ", regtId);
+    await fetchPostBoader(content, regtId);
   };
   return (
     <div>

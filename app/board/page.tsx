@@ -12,7 +12,7 @@ export default async function Test({ searchParams }) {
   return (
     <div className="p-20">
       <BoardFrom />
-      <BoardPage page={page || 1} />
+      <BoardPage page={page || 0} />
       <div className="p-20">
         {boardData &&
           boardData.map((value: BoardProps, index: number) => (

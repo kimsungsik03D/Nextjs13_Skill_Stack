@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { BoardPageProps } from "@/types";
-import { updateSearchParams } from "@/utils";
+import { updateSearchParams, removeSearchParams } from "@/utils";
 
 const BoardPage = ({ page }: BoardPageProps) => {
   const router = useRouter();
@@ -13,7 +13,16 @@ const BoardPage = ({ page }: BoardPageProps) => {
     if (state) {
       newPage++;
     } else {
-      page == 1 ? (newPage = 1) : newPage--;
+      if (newPage > 0) {
+        newPage--;
+      }
+      if (newPage <= 0) {
+        newPage = 0;
+
+        const newPathName = removeSearchParams("page");
+        router.push(newPathName, { scroll: false });
+        return;
+      }
     }
     const newPathName = updateSearchParams("page", `${newPage}`);
     router.push(newPathName, { scroll: false });
