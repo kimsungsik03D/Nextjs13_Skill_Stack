@@ -2,29 +2,28 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { BoardPageProps } from "@/types";
+import { updateSearchParams } from "@/utils";
 
-const BoardPage = () => {
+const BoardPage = ({ page }: BoardPageProps) => {
   const router = useRouter();
-  const [page, setPage] = useState(1);
-  useEffect(() => {}, [page]);
+
+  const handlePage = (state: boolean) => {
+    let newPage = page;
+    if (state) {
+      newPage++;
+    } else {
+      page == 1 ? (newPage = 1) : newPage--;
+    }
+    const newPathName = updateSearchParams("page", `${newPage}`);
+    router.push(newPathName, { scroll: false });
+  };
 
   return (
     <span id="BoardPage">
-      <button onClick={() => (page == 1 ? setPage(1) : setPage(page - 1))}>
-        -
-      </button>
+      <button onClick={() => handlePage(false)}>-</button>
       {page}
-      <button
-        onClick={() => {
-          setPage(page + 1);
-
-          router.push(`http://localhost:3000/board?page=${page}`, {
-            scroll: false,
-          });
-        }}
-      >
-        +
-      </button>
+      <button onClick={() => handlePage(true)}>+</button>
     </span>
   );
 };

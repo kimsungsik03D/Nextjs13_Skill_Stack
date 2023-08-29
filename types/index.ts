@@ -7,6 +7,9 @@ export interface BoardProps {
   page: string;
   editState?: string;
 }
+export interface BoardPageProps {
+  page: number;
+}
 
 export interface CustomButtonProps {
   title: string;

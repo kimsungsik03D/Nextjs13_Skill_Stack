@@ -5,13 +5,14 @@ import { fetchGetBoader } from "@/utils";
 import { boardSampleData } from "@/constants";
 import { BoardProps } from "@/types";
 
-export default async function Test() {
-  const boardData = await fetchGetBoader();
+export default async function Test({ searchParams }) {
+  const { page, no } = searchParams;
+  const boardData = await fetchGetBoader(no, page);
 
   return (
     <div className="p-20">
       <BoardFrom />
-      <BoardPage />
+      <BoardPage page={page || 1} />
       <div className="p-20">
         {boardData &&
           boardData.map((value: BoardProps, index: number) => (
