@@ -5,7 +5,7 @@ export interface BoardProps {
   content: string;
   regtId: string;
   page: string;
-  editState?: string;
+  editState?: boolean;
 }
 export interface BoardPageProps {
   page: number;
