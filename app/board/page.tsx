@@ -11,6 +11,7 @@ export default async function Test({ searchParams }) {
 
   return (
     <div className="p-20">
+      {/* page : {page} */}
       <BoardFrom />
       <BoardPage page={page || 0} />
       <div className="p-20">

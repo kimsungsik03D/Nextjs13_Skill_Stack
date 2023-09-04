@@ -24,6 +24,24 @@ export async function fetchPostBoader(content: string, regtId: string) {
 
   return result;
 }
+export async function fetchPutBoader(
+  no?: string | number,
+  content?: string,
+  regtId?: string
+) {
+  const data = { content, regtId, no };
+  const response = await fetch(`http://localhost:8080/crud/update`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(data),
+  });
+  const result = await response.json();
+
+  return result;
+}
 
 export const updateSearchParams = (type: string, value: string): string => {
   const searchParams = new URLSearchParams(window.location.search);
