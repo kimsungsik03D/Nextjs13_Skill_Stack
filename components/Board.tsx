@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BoardProps } from "@/types";
 import { fetchPutBoader } from "@/utils";
 
@@ -11,9 +11,18 @@ const Board = ({ boardData }: boardDataProps) => {
   const [initBoard, setInitBoard] = useState(boardData);
   const [board, setBoard] = useState(boardData);
 
+  useEffect(() => {
+    setBoard(boardData);
+  }, [boardData]);
+
   /** Action to Form Submit */
   const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (board.content == initBoard.content) {
+      alert("수정된 값이 없습니다.");
+
+      return;
+    }
     await fetchPutBoader(board.no, board.content, board.regtId);
   };
 
