@@ -1,13 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import { BoardProps } from "@/types";
-import { fetchPutBoader } from "@/utils";
+import { fetchGetBoader, fetchPutBoader, fetchDeleteBoader } from "@/utils";
+import { useRouter } from "next/navigation";
 
 interface boardDataProps {
   boardData: BoardProps;
 }
 
 const Board = ({ boardData }: boardDataProps) => {
+  const router = useRouter();
   const [initBoard, setInitBoard] = useState(boardData);
   const [board, setBoard] = useState(boardData);
 
@@ -24,6 +26,14 @@ const Board = ({ boardData }: boardDataProps) => {
       return;
     }
     await fetchPutBoader(board.no, board.content, board.regtId);
+  };
+  const handleDelete = async () => {
+    await fetchDeleteBoader(board.no);
+
+    const searchParams = new URLSearchParams(window.location.search);
+    const page = searchParams.get("page");
+
+    router.replace(`/board?page=${page}`);
   };
 
   return (
@@ -80,9 +90,17 @@ const Board = ({ boardData }: boardDataProps) => {
               수정
             </button>
 
-            {board.editState == true && (
+            {board.editState ? (
               <button className="bg-zinc-300 px-5 py-2 ml-3" type="reset">
                 취소
+              </button>
+            ) : (
+              <button
+                className="bg-zinc-300 px-5 py-2 ml-3"
+                type="button"
+                onClick={() => handleDelete()}
+              >
+                삭제
               </button>
             )}
           </span>

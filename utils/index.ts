@@ -1,8 +1,8 @@
 // import axios from "axios";
 
-export async function fetchGetBoader(no: number, page: string) {
+export async function fetchGetBoader(page: string | null) {
   const response = await fetch(
-    `http://localhost:8080/crud/select?no=&page=${page}`
+    `http://localhost:8080/crud/select?page=${page}`
   );
 
   const result = await response.json();
@@ -32,6 +32,22 @@ export async function fetchPutBoader(
   const data = { content, regtId, no };
   const response = await fetch(`http://localhost:8080/crud/update`, {
     method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(data),
+  });
+  const result = await response.json();
+
+  return result;
+}
+
+export async function fetchDeleteBoader(no?: string | number) {
+  const data = { no };
+  console.log("no", no);
+  const response = await fetch(`http://localhost:8080/crud/delete`, {
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       // 'Content-Type': 'application/x-www-form-urlencoded',

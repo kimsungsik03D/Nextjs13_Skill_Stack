@@ -7,7 +7,7 @@ import { BoardProps } from "@/types";
 
 export default async function Test({ searchParams }) {
   const { page, no } = searchParams;
-  const boardData = await fetchGetBoader(no, page);
+  const boardData = await fetchGetBoader(page);
 
   return (
     <div className="p-20">
