@@ -1,12 +1,13 @@
 import { MouseEventHandler } from "react";
 
 export interface BoardProps {
-  no: string | number;
-  content: string;
-  regtId: string;
-  page: string;
-  editState?: string;
+  no?: string | number;
+  content?: string;
+  regtId?: string;
+  page?: string;
+  editState?: boolean;
 }
+
 export interface BoardPageProps {
   page: number;
 }
