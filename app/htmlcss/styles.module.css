@@ -1,0 +1,38 @@
+#auto_scroll_text_row_move {
+  background-color: #000;
+  width: 100%;
+  font-family: "Pacifico", "cursive";
+  overflow-x: hidden;
+  height: 3000px;
+}
+
+.cover {
+  width: 100vw;
+  margin-bottom: 10rem;
+  display: flex;
+}
+.cover p {
+  display: flex;
+  padding: 3rem 0;
+  font-size: 5rem;
+}
+.cover:nth-child(1) {
+  margin-top: 50vh;
+  transform: rotate(-2deg);
+  background-color: #ff3796;
+}
+.cover:nth-child(2) {
+  transform: rotate(2deg);
+  background-color: #5800ff;
+  justify-content: flex-end;
+}
+.cover:nth-child(3) {
+  transform: rotate(-2deg);
+  background-color: #ecfe04;
+}
+.cover:nth-child(4) {
+  transform: rotate(2deg);
+  background-color: #00faac;
+  justify-content: flex-end;
+  margin-bottom: 50vh;
+}
