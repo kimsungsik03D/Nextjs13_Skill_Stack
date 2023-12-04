@@ -1,6 +1,6 @@
 // import axios from "axios";
 
-export async function fetchGetBoader(page: string | null) {
+export async function fetchGetBoader(page: string | number | null) {
   const response = await fetch(
     `http://localhost:8080/crud/select?page=${page}`
   );

@@ -5,7 +5,11 @@ import { fetchGetBoader } from "@/utils";
 import { boardSampleData } from "@/constants";
 import { BoardProps } from "@/types";
 
-export default async function Test({ searchParams }) {
+export default async function Test({
+  searchParams,
+}: {
+  searchParams: { page: string | number | null; no: string };
+}) {
   const { page, no } = searchParams;
   const boardData = await fetchGetBoader(page);
 
@@ -13,7 +17,7 @@ export default async function Test({ searchParams }) {
     <div className="p-20">
       {/* page : {page} */}
       <BoardFrom />
-      <BoardPage page={page || 0} />
+      <BoardPage page={Number(page) || 0} />
       <div className="p-20">
         {boardData &&
           boardData.map((value: BoardProps, index: number) => (
