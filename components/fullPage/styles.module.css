@@ -1,0 +1,14 @@
+.text_center {
+  @apply flex items-center justify-center h-full;
+}
+
+.card {
+  @apply w-full border text-center h-screen;
+}
+
+.dot_wrap {
+  @apply flex flex-col fixed top-1/2 right-4 h-[110px] justify-between;
+}
+.dot {
+  @apply border-4 rounded-full w-5 h-5 inline-block;
+}
