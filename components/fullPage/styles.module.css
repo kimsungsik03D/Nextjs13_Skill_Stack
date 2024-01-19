@@ -1,7 +1,3 @@
-.text_center {
-  @apply flex items-center justify-center h-full;
-}
-
 .card {
   @apply w-full border text-center h-screen;
 }
