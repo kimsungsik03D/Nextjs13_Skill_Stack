@@ -36,7 +36,7 @@ const Input = ({ type, label, ...props }: InputProps) => {
   const currentHandler = (event: ChangeEvent<HTMLInputElement>) => {
     let replaceValue = "";
 
-    const value = event.target.value;
+    const { value, selectionEnd } = event.target;
     const replaceComma = value.replaceAll(",", "");
 
     const checkNumber = /^[0-9]*$/; //체크 방식(숫자)
@@ -44,10 +44,25 @@ const Input = ({ type, label, ...props }: InputProps) => {
 
     if (!isNumber) return;
 
-    if (data == "0") {
+    if (Number(replaceComma) == 0) {
+      replaceValue = "0";
+    } else if (data == "0") {
       replaceValue = value.replace("0", "");
     } else {
       replaceValue = numberWithCommas(replaceComma);
+    }
+
+    const startPosition = selectionEnd && value.length - selectionEnd;
+
+    let cursorPoint = Math.max(value.length - (startPosition || 0), 0);
+
+    if (value.length != selectionEnd) {
+      setTimeout(() => {
+        if (selectionEnd == 0) {
+          cursorPoint = 1;
+        }
+        event.target.setSelectionRange(cursorPoint, cursorPoint);
+      }, 0); // 1초
     }
 
     setData(replaceValue);
@@ -62,7 +77,9 @@ const Input = ({ type, label, ...props }: InputProps) => {
       <label htmlFor="price">
         {label} : &nbsp;
         <input
-          className="border-4 px-3 py-1"
+          className={`border-4 px-3 py-1 ${
+            type == "current" ? "text-right" : ""
+          }`}
           name="price"
           type="type"
           value={data}
