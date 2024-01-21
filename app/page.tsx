@@ -15,6 +15,9 @@ export default function Home() {
         <li>
           <Link href="/dynamicwidth">4.dynamicwidth</Link>
         </li>
+        <li>
+          <Link href="/input">5.input</Link>
+        </li>
       </ul>
       <br />
     </main>
