@@ -14,3 +14,10 @@
 
 4. dynamicWidth
    -> https://www.youtube.com/watch?v=45mnmy2JUl0&list=LL&index=9&t=331s
+
+5. current input
+   -> https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+
+6. Swiper
+   -> https://www.youtube.com/watch?v=is7g5PX13ac&list=LL&index=4
+   -> https://swiperjs.com/

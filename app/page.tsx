@@ -18,6 +18,9 @@ export default function Home() {
         <li>
           <Link href="/input">5.input</Link>
         </li>
+        <li>
+          <Link href="/swiper">6.swiper</Link>
+        </li>
       </ul>
       <br />
     </main>
